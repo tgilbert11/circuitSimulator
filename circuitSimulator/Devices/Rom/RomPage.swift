@@ -16,7 +16,7 @@ class RomPage: Device {
         busInverter = Inverter(name: "\(name)-busInv", input: nil, output: outputNand.input1)
         
         for column in 0..<columns {
-            _ = RomColumn(name: "\(name)-RomCol\(column)", rows: rows, rowPins: rowPins, cEnable_: columnPins[column], output_: busInverter.input, data: data[column])
+            _ = RomColumn(name: "\(name)-RomCol\(column)", rows: rows, data: data[column], rowPins: rowPins, cEnable_: columnPins[column], output_: busInverter.input)
         }
         
         super.init(name: name)

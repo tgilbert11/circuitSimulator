@@ -3,22 +3,26 @@ class CircuitInput: Device {
     override var description: String { return "\(name): output: \(output.state)" }
 
     init(name: String, startingValue: Driving, output: Pin?) {
-        super.init(name: name)
-        if output != nil { self.output.connectTo(output!) }
         self.output.state = startingValue
+        
+        if output != nil { self.output.connectTo(output!) }
+        
+        super.init(name: name)
     }
 
     func toggle() {
         
-        if self.output.net != nil { self.output.net!.needsUpdate = true }
-        else { assert(false) }
         switch output.state {
-        case .drivingLow:
-            output.state = .pullingUp
-        case .pullingUp:
-            output.state = .drivingLow
-        default:
-            break
+            case .drivingLow:
+                output.state = .pullingUp
+            case .drivingHigh:
+                output.state = .pullingDown
+            case .pullingUp:
+                output.state = .drivingLow
+            case .pullingDown:
+                output.state = .drivingHigh
+            case .impeded, .shorted:
+                break
         }
         print("\(name) toggled to: \(self.output.state)")
         simulation.resolve()

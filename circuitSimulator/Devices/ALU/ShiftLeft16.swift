@@ -7,21 +7,15 @@ class ShiftLeft16: Device {
     var inverters: [Inverter] = []
     var nands: [Nand2] = []
     
-    override init(name: String) {
+    init(name: String, outputEnable: Pin?, data_: [Pin]?, output_: [Pin]?) {
         for _ in 0..<16 {
-            data_.append(Pin())
-            output_.append(Pin())
+            self.data_.append(Pin())
+            self.output_.append(Pin())
         }
         for pinNumber in 0..<16 {
-            inverters.append(Inverter(name: "\(name)-inverter\(pinNumber < 10 ? "0" : "")\(pinNumber)", input: pinNumber > 0 ? data_[pinNumber-1] : nil, output: nil))
-            nands.append(Nand2(name: "\(name)-nand\(pinNumber < 10 ? "0" : "")\(pinNumber)", input1: outputEnable, input2: pinNumber > 0 ? inverters[pinNumber].output : nil, output: output_[pinNumber]))
+            inverters.append(Inverter(name: "\(name)-inverter\(pinNumber < 10 ? "0" : "")\(pinNumber)", input: pinNumber > 0 ? self.data_[pinNumber-1] : nil, output: nil))
+            nands.append(Nand2(name: "\(name)-nand\(pinNumber < 10 ? "0" : "")\(pinNumber)", input1: self.outputEnable, input2: pinNumber > 0 ? self.inverters[pinNumber].output : nil, output: self.output_[pinNumber]))
         }
-        
-        super.init(name: name)
-    }
-    convenience init(name: String, outputEnable: Pin?, data_: [Pin]?, output_: [Pin]?) {
-        self.init(name: name)
-        if outputEnable != nil { self.outputEnable.connectTo(outputEnable!) }
         
         if let definiteData_ = data_ {
             assert(definiteData_.count == 16, "\(name).data_ has incorrect number of Pins")
@@ -35,7 +29,12 @@ class ShiftLeft16: Device {
                 self.output_[pinNumber].connectTo(definiteOutput_[pinNumber])
             }
         }
+        
+        if outputEnable != nil { self.outputEnable.connectTo(outputEnable!) }
+        
+        super.init(name: name)
     }
+
     override var description: String { return "\(name): outputEnable: \(outputEnable.connectedTo), data_: \(valueOfBus(data_)), output_: \(valueOfBus(output_))" }
     override func status() -> String { return "\(name): \(valueOfBus(data_)), \(valueOfBus(output_))" }
 }

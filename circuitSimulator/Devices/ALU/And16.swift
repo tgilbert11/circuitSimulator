@@ -10,24 +10,18 @@ class And16: Device {
     var inverters: [Inverter] = []
     var nands: [Nand2] = []
     
-    override init(name: String) {
+    init(name: String, outputEnable: Pin?, sideA_: [Pin]?, sideB_: [Pin]?, internal_: [Pin]?, output_: [Pin]?) {
         for _ in 0..<16 {
-            sideA_.append(Pin())
-            sideB_.append(Pin())
-            internal_.append(Pin())
-            output_.append(Pin())
+            self.sideA_.append(Pin())
+            self.sideB_.append(Pin())
+            self.internal_.append(Pin())
+            self.output_.append(Pin())
         }
         for pinNumber in 0..<16 {
-            nors.append(Nor2(name: "\(name)-nor\(pinNumber < 10 ? "0" : "")\(pinNumber)", input1: sideA_[pinNumber], input2: sideB_[pinNumber], output: nil))
-            inverters.append(Inverter(name: "\(name)-inverter\(pinNumber < 10 ? "0" : "")\(pinNumber)", input: nors[pinNumber].output, output: internal_[pinNumber]))
-            nands.append(Nand2(name: "\(name)-nand\(pinNumber < 10 ? "0" : "")\(pinNumber)", input1: outputEnable, input2: nors[pinNumber].output, output: output_[pinNumber]))
+            nors.append(Nor2(name: "\(name)-nor\(pinNumber < 10 ? "0" : "")\(pinNumber)", input1: self.sideA_[pinNumber], input2: self.sideB_[pinNumber], output: nil))
+            inverters.append(Inverter(name: "\(name)-inverter\(pinNumber < 10 ? "0" : "")\(pinNumber)", input: self.nors[pinNumber].output, output: self.internal_[pinNumber]))
+            nands.append(Nand2(name: "\(name)-nand\(pinNumber < 10 ? "0" : "")\(pinNumber)", input1: self.outputEnable, input2: self.nors[pinNumber].output, output: self.output_[pinNumber]))
         }
-        
-        super.init(name: name)
-    }
-    convenience init(name: String, outputEnable: Pin?, sideA_: [Pin]?, sideB_: [Pin]?, internal_: [Pin]?, output_: [Pin]?) {
-        self.init(name: name)
-        if outputEnable != nil { self.outputEnable.connectTo(outputEnable!) }
         
         if let definiteA_ = sideA_ {
             assert(definiteA_.count == 16, "\(name).sideA_ has incorrect number of Pins")
@@ -53,7 +47,12 @@ class And16: Device {
                 self.output_[pinNumber].connectTo(definiteOutput_[pinNumber])
             }
         }
+        
+        if outputEnable != nil { self.outputEnable.connectTo(outputEnable!) }
+
+        super.init(name: name)
     }
+
     override var description: String { return "\(name): outputEnable: \(outputEnable.connectedTo), sideA_: \(valueOfBus(sideA_)), sideB_: \(valueOfBus(sideB_)), output_: \(valueOfBus(output_))" }
     override func status() -> String { return "\(name): \(valueOfBus(internal_)), \(valueOfBus(output_))" }
 }

@@ -22,7 +22,7 @@ class Simulation {
             propogationTime = propogationTime + 1
             
             nets.forEach({ $0.update() })
-            devicesChanged = devices.reduce(false, { $0 || $1.updateIfNeeded() })
+            devicesChanged = devices.reduce(false, { $0 || $1.update_TrueIfChanged() })
             
         } while devicesChanged == true
         

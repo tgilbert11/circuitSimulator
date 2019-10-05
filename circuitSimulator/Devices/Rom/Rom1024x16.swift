@@ -80,7 +80,6 @@ class Rom1024x16: Device {
             }
             
             self.pages.append(RomPage(name: "\(name)-Page\(outputBit)", rows: 32, rowPins: rowNors.map({ $0.output }), columns: 32, columnPins: columnNands.map({ $0.output }), outputEnable: outputEnable, output: outputPins[outputBit], data: thisPageData))
-            //self.outputPins[outputBit].connectTo(self.pages[outputBit].output)
         }
         
         self.outputEnable.connectTo(outputEnable)
