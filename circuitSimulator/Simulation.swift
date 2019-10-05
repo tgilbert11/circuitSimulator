@@ -1,8 +1,12 @@
 class Simulation {
-    let monitor = Monitor()
+    private let monitor = Monitor()
     var propogationTime = 0
     var nets: [Net] = []
     var devices: [Device] = []
+    
+    func monitor(_ participant: SimulationParticipant) {
+        self.monitor.participants.append(participant)
+    }
     
     func add(_ net: Net) {
         nets.append(net)
@@ -12,20 +16,20 @@ class Simulation {
     }
     
     func resolve() {
-        var netsChanged = true
         var devicesChanged = true
         
-        while netsChanged || devicesChanged == true {
+        while devicesChanged == true {
             propogationTime = propogationTime + 1
             //print(" ======== resolve loop")
-            netsChanged = false
+            print("t = \(propogationTime):")
             devicesChanged = false
             for net in nets {
                 let changed = net.updateIfNeeded()
-                if changed && netsChanged == false {
-                    //print("nets changed")
-                    netsChanged = true
-                }
+                //if changed { print("      \(net.name) changed") }
+//                if changed && netsChanged == false {
+//                    //print("nets changed")
+//                    netsChanged = true
+//                }
 //                let changed = net.update_TrueIfChanged()
 //                netsChanged = netsChanged || changed
                 //print("N-\(net); changed: \(changed)")
@@ -34,6 +38,8 @@ class Simulation {
                 
                 //print("device before change: \(device)")
                 let changed = device.updateIfNeeded()
+                //if changed { print("      \(device.name) changed") }
+                devicesChanged = devicesChanged || changed
                 //print("device after change:  \(device)")
 //                if device is Nor2 {
 //                    print(Unmanaged.passUnretained((device as! Nor2).output).toOpaque())
@@ -41,25 +47,33 @@ class Simulation {
 //                if device is Inverter {
 //                    print(Unmanaged.passUnretained((device as! Inverter).output).toOpaque())
 //                }
-                if changed && devicesChanged == false {
-                    //print("devices changed")
-                    devicesChanged = true
-                }
+//                if changed && devicesChanged == false {
+//                    //print("devices changed")
+//                    devicesChanged = true
+//                }
 //                let changed = device.update_TrueIfChanged()
 //                devicesChanged = devicesChanged || changed
-                if device is Register16 || device is FlipFlopCell { print("D-\(device); changed: \(changed)") }
+//                if device is Register16 || device is FlipFlopCell { print("D-\(device); changed: \(changed)") }
             }
             //print("nets changed: \(netsChanged)")
             //print("devices changed: \(devicesChanged)")
-            if netsChanged == false && devicesChanged == false {
-                print("===== Resolved To =====")
-                for device in devices {
-                    if device is Register16 || device is CircuitInput { print(device) }
-                }
-                print("=====  =====")
+            
+            
+//            for net in nets {
+//                print("   \(net)")
+//            }
+//            for device in devices {
+//                print("   \(device)")
+//            }
+            for device in devices {
+                if device is CircuitOutput { print("   \(device.status())") }
             }
-            //monitor.printStatus()
+            
+            
+//            if devicesChanged == false {
+//                print("===== Resolved To =====")
+//                print("=====  =====")
+//            }
         }
-        //monitor.printStatus()
     }
 }

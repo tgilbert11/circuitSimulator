@@ -19,7 +19,6 @@ class RomColumn: Device {
         }
         
         super.init(name: name)
-        simulation.add(self)
     }
     convenience init(name: String, rows: Int, rowPins: [Pin?], cEnable_: Pin?, output_: Pin?, data: [Bool]) {
         assert(rowPins.count == rows, "RomColumn \(name): mismatched row count and pin count")

@@ -33,7 +33,6 @@ class Register16: Device {
         }
         
         super.init(name: name)
-        simulation.add(self)
     }
     convenience init(name: String, clock: Pin?, setEnable_: Pin?, reset: Pin?, outputEnable: Pin?, data_: [Pin]?, internal_: [Pin]?, output_: [Pin]?) {
         self.init(name: name)

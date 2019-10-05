@@ -12,7 +12,6 @@ class RomCell: Device {
             self.inverter = nil
         }
         super.init(name: name)
-        simulation.add(self)
     }
     convenience init(name: String, input: Pin?, output: Pin?, data: Bool) {
         self.init(name: name, data: data)

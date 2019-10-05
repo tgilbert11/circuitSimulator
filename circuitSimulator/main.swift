@@ -1,5 +1,10 @@
 import Foundation
 
+func paddedPrint(_ inputString: String) {
+    let printLength = 60
+    let padding = Array(repeating: " ", count: max(0, printLength-inputString.count))
+    print(inputString + padding.reduce("", { $0 + $1 }), terminator: "")
+}
 
 func runMicrocodedInstruction(clock: CircuitInput, lines: CircuitInput...) {
     for line in lines {
@@ -11,13 +16,25 @@ func runMicrocodedInstruction(clock: CircuitInput, lines: CircuitInput...) {
     }
 }
 
-func paddedPrint(_ inputString: String) {
-    let printLength = 60
-    let padding = Array(repeating: " ", count: max(0, printLength-inputString.count))
-    print(inputString + padding.reduce("", { $0 + $1 }), terminator: "")
-}
 
 let simulation = Simulation()
+
+let set = CircuitInput(name: "set", startingValue: .drivingLow, output: nil)
+let reset = CircuitInput(name: "reset", startingValue: .pullingUp, output: nil)
+
+let upperNor = Nor2(name: "upperNor", input1: set.output, input2: nil, output: nil)
+let lowerNor = Nor2(name: "lowerNor", input1: upperNor.output, input2: reset.output, output: upperNor.input2)
+
+let q = CircuitOutput(name: "q", input: lowerNor.output)
+
+simulation.resolve()
+
+reset.toggle()
+
+set.toggle()
+set.toggle()
+
+reset.toggle()
 
 // =====  CIRCUIT DESCRIPTION  =====
 
@@ -90,46 +107,55 @@ let simulation = Simulation()
 
 // --- register tester ---
 
+//
+//let clock = CircuitInput(name: "clock", startingValue: .drivingLow, output: nil)
+//let reset = CircuitInput(name: "reset", startingValue: .pullingUp, output: nil)
+//
+//let dataBus = busWithValue(value: 0)
+////let aluBus = busWithValue(value: 0)
+//
+//
+//let value3OutputEnable = CircuitInput(name: "value3OutputEnable", startingValue: .drivingLow, output: nil)
+//let value3 = FixedBusDriver16(name: "fixedValue3", outputEnable: value3OutputEnable.output, value: 3, output_: dataBus)
+//
+//let memoryData = busWithValue(value: 0)
+//let memoryOutputEnable = CircuitInput(name: "memoryOutputEnable", startingValue: .drivingLow, output: nil)
+//let memory = BusDriver16(name: "Memory", outputEnable: memoryOutputEnable.output, data_: memoryData, output_: dataBus)
+//simulation.monitor(memory)
+//
+//let aSetEnable_ = CircuitInput(name: "aSetEnable_", startingValue: .pullingUp, output: nil)
+//let aOutputEnable = CircuitInput(name: "aOutputEnable", startingValue: .drivingLow, output: nil)
+//let aRegister = Register16(name: "A", clock: clock.output, setEnable_: aSetEnable_.output, reset: reset.output, outputEnable: aOutputEnable.output, data_: dataBus, internal_: nil, output_: dataBus)
+//simulation.monitor(aRegister)
+//
+//let bSetEnable_ = CircuitInput(name: "bSetEnable_", startingValue: .pullingUp, output: nil)
+//let bOutputEnable = CircuitInput(name: "bOutputEnable", startingValue: .drivingLow, output: nil)
+//let bRegister = Register16(name: "B", clock: clock.output, setEnable_: bSetEnable_.output, reset: reset.output, outputEnable: bOutputEnable.output, data_: dataBus, internal_: nil, output_: dataBus)
+//simulation.monitor(bRegister)
+//
+//let andOutputEnable = CircuitInput(name: "andOutputEnable", startingValue: .drivingLow, output: nil)
+//let aluAnd = And16(name: "AandB", outputEnable: andOutputEnable.output, sideA_: aRegister.internal_, sideB_: bRegister.internal_, internal_: nil, output_: dataBus)
+//simulation.monitor(aluAnd)
+//
+//paddedPrint("simulation stats: \(simulation.nets.count) nets, \(simulation.devices.count) devices, \(simulation.devices.reduce(0, { $0 + $1.transistors() })) transistors")
+//
+//// ===== SIMULATION POWER UP =====
+//simulation.resolve()
+//reset.toggle()
+//
+//// ===== SIMULATION STEPS =====
+//
+//setValueToBus(value: 10, bus: memoryData)
+//runMicrocodedInstruction(clock: clock, lines: memoryOutputEnable, aSetEnable_)
 
-let clock = CircuitInput(name: "clock", startingValue: .drivingLow)
-let reset = CircuitInput(name: "reset", startingValue: .pullingUp)
-
-let dataBus = busWithValue(value: 0)
-//let aluBus = busWithValue(value: 0)
 
 
-let value3OutputEnable = CircuitInput(name: "value3OutputEnable", startingValue: .drivingLow)
-let value3 = FixedBusDriver16(name: "fixedValue3", outputEnable: value3OutputEnable.output, value: 3, output_: dataBus)
 
-let memoryData = busWithValue(value: 0)
-let memoryOutputEnable = CircuitInput(name: "memoryOutputEnable", startingValue: .drivingLow)
-let memory = BusDriver16(name: "Memory", outputEnable: memoryOutputEnable.output, data_: memoryData, output_: dataBus)
-simulation.monitor.participants.append(memory)
 
-let aSetEnable_ = CircuitInput(name: "aSetEnable_", startingValue: .pullingUp)
-let aOutputEnable = CircuitInput(name: "aOutputEnable", startingValue: .drivingLow)
-let aRegister = Register16(name: "A", clock: clock.output, setEnable_: aSetEnable_.output, reset: reset.output, outputEnable: aOutputEnable.output, data_: dataBus, internal_: nil, output_: dataBus)
-simulation.monitor.participants.append(aRegister)
 
-let bSetEnable_ = CircuitInput(name: "bSetEnable_", startingValue: .pullingUp)
-let bOutputEnable = CircuitInput(name: "bOutputEnable", startingValue: .drivingLow)
-let bRegister = Register16(name: "B", clock: clock.output, setEnable_: bSetEnable_.output, reset: reset.output, outputEnable: bOutputEnable.output, data_: dataBus, internal_: nil, output_: dataBus)
-simulation.monitor.participants.append(bRegister)
 
-let andOutputEnable = CircuitInput(name: "andOutputEnable", startingValue: .drivingLow)
-let aluAnd = And16(name: "AandB", outputEnable: andOutputEnable.output, sideA_: aRegister.internal_, sideB_: bRegister.internal_, internal_: nil, output_: dataBus)
-simulation.monitor.participants.append(aluAnd)
 
-paddedPrint("simulation stats: \(simulation.nets.count) nets, \(simulation.devices.count) devices, \(simulation.devices.reduce(0, { $0 + $1.transistors() })) transistors")
 
-// ===== SIMULATION POWER UP =====
-simulation.resolve()
-reset.toggle()
-
-// ===== SIMULATION STEPS =====
-
-setValueToBus(value: 10, bus: memoryData)
-runMicrocodedInstruction(clock: clock, lines: memoryOutputEnable, aSetEnable_)
 //
 //setValueToBus(value: 6, bus: memoryData)
 //runMicrocodedInstruction(clock: clock, lines: memoryOutputEnable, bSetEnable_)

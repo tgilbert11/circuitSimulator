@@ -23,7 +23,6 @@ class RomPage2x2: Device {
         column1 = RomColumn(name: "\(name)-RomCol1", rows: 2, rowPins: [r0, r1], cEnable_: c1_, output_: busInverter.input, data: [d10, d11])
         
         super.init(name: name)
-        simulation.add(self)
     }
     convenience init(name: String, r0: Pin?, r1: Pin?, c0_: Pin?, c1_: Pin?, outputEnable: Pin?, output: Pin?, d00: Bool, d01: Bool, d10: Bool, d11: Bool) {
         self.init(name: name, d00: d00, d01: d01, d10: d10, d11: d11)

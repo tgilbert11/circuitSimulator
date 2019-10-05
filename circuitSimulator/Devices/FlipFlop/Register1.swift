@@ -27,7 +27,6 @@ class Register1: Device {
         cell = FlipFlopCell(name: "\(name)-cell", pulse_: pulseInverter.output, pulse: setNor.output, reset: reset, outputEnable: outputEnable, data_: data_, internal_: internal_, output_: output_)
         
         super.init(name: name)
-        simulation.add(self)
     }
     convenience init(name: String, clock: Pin?, setEnable_: Pin?, reset: Pin?, outputEnable: Pin?, data_: Pin?, internal_: Pin?, output_: Pin?) {
         self.init(name: name)

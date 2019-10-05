@@ -31,6 +31,8 @@
 		B535867B2348E4D500B32A09 /* Simulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535867A2348E4D500B32A09 /* Simulation.swift */; };
 		B535867D2348E4EE00B32A09 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535867C2348E4EE00B32A09 /* Monitor.swift */; };
 		B535867F2348E52F00B32A09 /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535867E2348E52F00B32A09 /* Bus.swift */; };
+		B53586822348E63900B32A09 /* RegisterTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586812348E63900B32A09 /* RegisterTester.swift */; };
+		B53586842348F38B00B32A09 /* CircuitOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586832348F38B00B32A09 /* CircuitOutput.swift */; };
 		B5FCAB8C23262B49003DE0A4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCAB8B23262B49003DE0A4 /* main.swift */; };
 		B5FCAB9323262B68003DE0A4 /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCAB9223262B68003DE0A4 /* Net.swift */; };
 		B5FCAB9523262BB3003DE0A4 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCAB9423262BB3003DE0A4 /* Pin.swift */; };
@@ -73,6 +75,8 @@
 		B535867A2348E4D500B32A09 /* Simulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulation.swift; sourceTree = "<group>"; };
 		B535867C2348E4EE00B32A09 /* Monitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
 		B535867E2348E52F00B32A09 /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
+		B53586812348E63900B32A09 /* RegisterTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTester.swift; sourceTree = "<group>"; };
+		B53586832348F38B00B32A09 /* CircuitOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitOutput.swift; sourceTree = "<group>"; };
 		B5FCAB8823262B49003DE0A4 /* circuitSimulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = circuitSimulator; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5FCAB8B23262B49003DE0A4 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B5FCAB9223262B68003DE0A4 /* Net.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 				B53586562348E34700B32A09 /* Nor5.swift */,
 				B53586582348E35500B32A09 /* Nand2.swift */,
 				B535865A2348E36600B32A09 /* Nand5.swift */,
+				B53586832348F38B00B32A09 /* CircuitOutput.swift */,
 			);
 			path = Fundamental;
 			sourceTree = "<group>";
@@ -148,6 +153,14 @@
 			path = ALU;
 			sourceTree = "<group>";
 		};
+		B53586802348E62600B32A09 /* Circuits */ = {
+			isa = PBXGroup;
+			children = (
+				B53586812348E63900B32A09 /* RegisterTester.swift */,
+			);
+			path = Circuits;
+			sourceTree = "<group>";
+		};
 		B5FCAB7F23262B49003DE0A4 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +188,7 @@
 				B535867E2348E52F00B32A09 /* Bus.swift */,
 				B535867A2348E4D500B32A09 /* Simulation.swift */,
 				B535867C2348E4EE00B32A09 /* Monitor.swift */,
+				B53586802348E62600B32A09 /* Circuits */,
 				B535864D2348E28300B32A09 /* Devices */,
 			);
 			path = circuitSimulator;
@@ -240,6 +254,7 @@
 			files = (
 				B535867F2348E52F00B32A09 /* Bus.swift in Sources */,
 				B5FCAB9523262BB3003DE0A4 /* Pin.swift in Sources */,
+				B53586842348F38B00B32A09 /* CircuitOutput.swift in Sources */,
 				B53586692348E41200B32A09 /* Rom1024x16.swift in Sources */,
 				B535866E2348E43F00B32A09 /* Register1.swift in Sources */,
 				B53586722348E46600B32A09 /* BusDriver16.swift in Sources */,
@@ -253,6 +268,7 @@
 				B53586632348E3DB00B32A09 /* RomPage2x2.swift in Sources */,
 				B535867B2348E4D500B32A09 /* Simulation.swift in Sources */,
 				B53586592348E35500B32A09 /* Nand2.swift in Sources */,
+				B53586822348E63900B32A09 /* RegisterTester.swift in Sources */,
 				B535867D2348E4EE00B32A09 /* Monitor.swift in Sources */,
 				B53586572348E34700B32A09 /* Nor5.swift in Sources */,
 				B53586672348E3FA00B32A09 /* Rom4x8.swift in Sources */,

@@ -14,8 +14,6 @@ class FixedBusDriver16: Device {
                 inverters.append(Inverter(name: "\(name)-inverter\(pinNumber < 10 ? "0" : "")\(pinNumber)", input: outputEnable, output: output_[pinNumber]))
             }
         }
-        
-        simulation.add(self)
     }
     convenience init(name: String, outputEnable: Pin?, value: UInt16, output_: [Pin]?) {
         self.init(name: name, value: value)

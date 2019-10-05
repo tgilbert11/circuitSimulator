@@ -39,7 +39,6 @@ class Rom4x8: Device {
         _ = RomPage2x2(name: "\(name)-Page7", r0: a0, r1: a0Inverter.output, c0_: a1Inverter.output, c1_: a1, outputEnable: outputEnable, output: o7, d00: data[0] & test > 0, d01: data[1] & test > 0, d10: data[2] & test > 0, d11: data[3] & test > 0)
 
         super.init(name: name)
-        simulation.add(self)
     }
     
     convenience init(name: String, a0: Pin?,  a1: Pin?,  outputEnable: Pin?,  o0: Pin?,  o1: Pin?,  o2: Pin?,  o3: Pin?,  o4: Pin?,  o5: Pin?,  o6: Pin?,  o7: Pin?, data: [UInt8]) {

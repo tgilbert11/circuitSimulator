@@ -26,7 +26,6 @@ class FlipFlopCell: Device {
         lowerNand.output.connectTo(internal_)
         
         super.init(name: name)
-        simulation.add(self)
     }
     convenience init(name: String, pulse_: Pin?, pulse: Pin?, reset: Pin?, outputEnable: Pin?, data_: Pin?, internal_: Pin?, output_: Pin?) {
         self.init(name: name)

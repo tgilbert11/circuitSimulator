@@ -24,7 +24,6 @@ class And16: Device {
         }
         
         super.init(name: name)
-        simulation.add(self)
     }
     convenience init(name: String, outputEnable: Pin?, sideA_: [Pin]?, sideB_: [Pin]?, internal_: [Pin]?, output_: [Pin]?) {
         self.init(name: name)

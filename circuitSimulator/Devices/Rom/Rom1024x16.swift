@@ -18,8 +18,8 @@ class Rom1024x16: Device {
         var rowNors: [Nor5] = []
         var columnNands: [Nand5] = []
         for lineNumber in 0..<32 {
-            let rowNor = Nor5(name: "\(name)-rowNor\(lineNumber)")
-            let columnNand = Nand5(name: "\(name)-ColumnNand\(lineNumber)")
+            let rowNor = Nor5(name: "\(name)-rowNor\(lineNumber)", input1: nil, input2: nil, input3: nil, input4: nil, input5: nil, output: nil)
+            let columnNand = Nand5(name: "\(name)-ColumnNand\(lineNumber)", input1: nil, input2: nil, input3: nil, input4: nil, input5: nil, output: nil)
             
             if lineNumber & 0b00001 > 0 {
                 rowNor.input1.connectTo(addressPins[0])
@@ -86,7 +86,6 @@ class Rom1024x16: Device {
         self.outputEnable.connectTo(outputEnable)
         
         super.init(name: name)
-        simulation.add(self)
     }
     
     override var description: String { return "\(name): inputs: \(outputEnable.connectedTo); output: " }

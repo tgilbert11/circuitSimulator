@@ -1,17 +1,15 @@
 class CircuitInput: Device {
     let output = Pin()
-    init(name: String, startingValue: Driving) {
-        super.init(name: name)
-        output.state = startingValue
-        simulation.add(self)
-    }
-    init(name: String, startingValue: Driving, output: Pin?) {
-        if output != nil { self.output.connectTo(output!) }
-        super.init(name: name)
-        simulation.add(self)
-    }
     override var description: String { return "\(name): output: \(output.state)" }
+
+    init(name: String, startingValue: Driving, output: Pin?) {
+        super.init(name: name)
+        if output != nil { self.output.connectTo(output!) }
+        self.output.state = startingValue
+    }
+
     func toggle() {
+        
         if self.output.net != nil { self.output.net!.needsUpdate = true }
         else { assert(false) }
         switch output.state {
@@ -22,7 +20,7 @@ class CircuitInput: Device {
         default:
             break
         }
-        //paddedPrint("\(name) toggled to: \(output.state). ")
+        print("\(name) toggled to: \(self.output.state)")
         simulation.resolve()
     }
     func tick() {

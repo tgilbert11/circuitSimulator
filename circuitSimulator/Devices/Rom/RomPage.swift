@@ -20,7 +20,6 @@ class RomPage: Device {
         }
         
         super.init(name: name)
-        simulation.add(self)
     }
         
     override var description: String { return "\(name): inputs: \(outputEnable.connectedTo); output: \(output.state)" }

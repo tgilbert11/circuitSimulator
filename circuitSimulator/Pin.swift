@@ -4,13 +4,75 @@ enum Driving: String {
     case pullingUp
     case pullingDown
     case impeded
+    case shorted
+    
+    var netValue: NetValue {
+        switch self {
+            case .drivingHigh, .pullingUp: return .high
+            case .drivingLow, .pullingDown: return .low
+            default: return .floating
+        }
+    }
+    
+    static func * (lhs: Driving, rhs: Driving) -> Driving {
+        switch lhs {
+            case .drivingHigh:
+                switch rhs {
+                    case .drivingHigh: return drivingHigh
+                    case .drivingLow: return shorted
+                    case .pullingUp: return drivingHigh
+                    case .pullingDown: return drivingHigh
+                    case .impeded: return drivingHigh
+                    case .shorted: return shorted
+            }
+            case .drivingLow:
+                switch rhs {
+                    case .drivingHigh: return shorted
+                    case .drivingLow: return drivingLow
+                    case .pullingUp: return drivingLow
+                    case .pullingDown: return drivingLow
+                    case .impeded: return drivingLow
+                    case .shorted: return shorted
+            }
+            case .pullingUp:
+                switch rhs {
+                    case .drivingHigh: return drivingHigh
+                    case .drivingLow: return drivingLow
+                    case .pullingUp: return pullingUp
+                    case .pullingDown: return shorted
+                    case .impeded: return pullingUp
+                    case .shorted: return shorted
+            }
+            case .pullingDown:
+                switch rhs {
+                    case .drivingHigh: return drivingHigh
+                    case .drivingLow: return drivingLow
+                    case .pullingUp: return shorted
+                    case .pullingDown: return pullingDown
+                    case .impeded: return pullingDown
+                    case .shorted: return shorted
+            }
+            case .impeded:
+                switch rhs {
+                    case .drivingHigh: return drivingHigh
+                    case .drivingLow: return drivingLow
+                    case .pullingUp: return pullingUp
+                    case .pullingDown: return pullingDown
+                    case .impeded: return impeded
+                    case .shorted: return shorted
+            }
+            case .shorted:
+                return shorted
+        }
+    }
 }
 
+
 class Pin: CustomStringConvertible {
-    static var pins: [Pin] = []
+    static var pins: [Pin] = [] // for debugging only
     var net: Net?
     var state: Driving = .impeded
-    var connectedTo: NetValue = .floating
+    var connectedTo: NetValue { return net?.storedValue ?? .floating }
     var description: String { return "\(self.net == nil ? "*" : "")\(self.state)" }
     
     init() {
@@ -18,7 +80,7 @@ class Pin: CustomStringConvertible {
     }
     
     func connectTo(_ pin: Pin) {
-        print("proximal pin: \(Unmanaged.passUnretained(self).toOpaque()); distal pin: \(Unmanaged.passUnretained(pin).toOpaque())")
+        //print("proximal pin: \(Unmanaged.passUnretained(self).toOpaque()); distal pin: \(Unmanaged.passUnretained(pin).toOpaque())")
         if let definiteDistalNet = pin.net {
             //print("distal net exists + ", terminator: "")
             if let definiteProximalNet = self.net {

@@ -17,7 +17,6 @@ class BusDriver16: Device {
         }
         
         super.init(name: name)
-        simulation.add(self)
     }
     convenience init(name: String, outputEnable: Pin?, data_: [Pin]?, output_: [Pin]?) {
         self.init(name: name)

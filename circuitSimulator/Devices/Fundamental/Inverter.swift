@@ -1,12 +1,9 @@
 class Inverter: Device {
     let input = Pin()
     let output = Pin()
-    override init(name: String) {
+    
+    init(name: String, input: Pin?, output: Pin?) {
         super.init(name: name)
-        simulation.add(self)
-    }
-    convenience init(name: String, input: Pin?, output: Pin?) {
-        self.init(name: name)
         if input != nil { self.input.connectTo(input!) }
         if output != nil { self.output.connectTo(output!) }
     }
@@ -23,24 +20,24 @@ class Inverter: Device {
     }
     
     override func updateIfNeeded() -> Bool {
-        //print("arrived at \(name), \(input.net), \(input.net!.updatedThisCycle)")
-        //print(Unmanaged.passUnretained((self as! Inverter).output).toOpaque())
-        if input.net != nil && input.net!.updatedThisCycle {
-            //print("something may have changed")
-            let changed = update_TrueIfChanged()
-            if changed {
-                //print("something changed")
-                output.net!.needsUpdate = true
-            }
-//            else {
-//                //print("false alarm")
+//        //print("arrived at \(name), \(input.net), \(input.net!.updatedThisCycle)")
+//        //print(Unmanaged.passUnretained((self as! Inverter).output).toOpaque())
+//        if input.net != nil && input.net!.updatedThisCycle {
+//            //print("something may have changed")
+//            let changed = update_TrueIfChanged()
+//            if changed {
+//                //print("something changed")
+//                output.net!.needsUpdate = true
 //            }
-            return changed
-        }
-//        else {
-//            print("nothing appears to have changed")
+////            else {
+////                //print("false alarm")
+////            }
+//            return changed
 //        }
-        return false
+////        else {
+////            print("nothing appears to have changed")
+////        }
+        return update_TrueIfChanged()
     }
 
     override var description: String { return "\(name): input: \(input.connectedTo); output: \(output)" }
