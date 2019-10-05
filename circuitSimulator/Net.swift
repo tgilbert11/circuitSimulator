@@ -20,14 +20,8 @@ class Net: SimulationParticipant {
         simulation.add(self)
     }
     
-    override func updateIfNeeded() -> Bool {
-        update_TrueIfChanged()
-    }
-    
-    override func update_TrueIfChanged() -> Bool {
-        let previousValue = storedValue
+    func update() {
         storedValue = output
-        return storedValue != previousValue
     }
     
     override var description: String { return "\(self.name): \(pins.count > 0 ? pins[0].description + pins.dropFirst().map({", " + $0.description}).reduce("", {$0 + $1}) : "no pins"): \(self.output)" }
