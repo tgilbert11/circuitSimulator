@@ -117,7 +117,7 @@ let bRegister = Register16(name: "B", clock: clock.output, setEnable_: bSetEnabl
 simulation.monitor.participants.append(bRegister)
 
 let andOutputEnable = CircuitInput(name: "andOutputEnable", startingValue: .drivingLow)
-let aluAnd = ALUAnd(name: "AandB", outputEnable: andOutputEnable.output, sideA_: aRegister.internal_, sideB_: bRegister.internal_, internal_: nil, output_: dataBus)
+let aluAnd = And16(name: "AandB", outputEnable: andOutputEnable.output, sideA_: aRegister.internal_, sideB_: bRegister.internal_, internal_: nil, output_: dataBus)
 simulation.monitor.participants.append(aluAnd)
 
 paddedPrint("simulation stats: \(simulation.nets.count) nets, \(simulation.devices.count) devices, \(simulation.devices.reduce(0, { $0 + $1.transistors() })) transistors")
