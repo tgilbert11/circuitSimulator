@@ -40,7 +40,7 @@ class Pin: CustomStringConvertible {
     }
     
     func connectTo(_ pin: Pin) {
-        //print("proximal pin: \(Unmanaged.passUnretained(self).toOpaque()); distal pin: \(Unmanaged.passUnretained(pin).toOpaque())")
+        print("proximal pin: \(Unmanaged.passUnretained(self).toOpaque()); distal pin: \(Unmanaged.passUnretained(pin).toOpaque())")
         if let definiteDistalNet = pin.net {
             //print("distal net exists + ", terminator: "")
             if let definiteProximalNet = self.net {
