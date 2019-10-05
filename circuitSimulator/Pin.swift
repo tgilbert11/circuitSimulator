@@ -1,3 +1,11 @@
+enum Driving: String {
+    case drivingHigh
+    case drivingLow
+    case pullingUp
+    case pullingDown
+    case impeded
+}
+
 class Pin: CustomStringConvertible {
     static var pins: [Pin] = []
     var net: Net?

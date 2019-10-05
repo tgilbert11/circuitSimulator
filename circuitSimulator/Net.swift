@@ -1,3 +1,9 @@
+enum NetValue: String {
+    case high
+    case low
+    case floating
+}
+
 class Net: SimulationParticipant {
     var updatedThisCycle = false
     let name: String

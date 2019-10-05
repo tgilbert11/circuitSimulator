@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B535864C2348E26F00B32A09 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535864B2348E26F00B32A09 /* Device.swift */; };
+		B535864F2348E2A500B32A09 /* SimulationParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535864E2348E2A500B32A09 /* SimulationParticipant.swift */; };
+		B53586512348E2EC00B32A09 /* CircuitInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586502348E2EC00B32A09 /* CircuitInput.swift */; };
+		B53586532348E30900B32A09 /* Inverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586522348E30900B32A09 /* Inverter.swift */; };
+		B53586552348E31E00B32A09 /* Nor2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586542348E31E00B32A09 /* Nor2.swift */; };
+		B53586572348E34700B32A09 /* Nor5.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586562348E34700B32A09 /* Nor5.swift */; };
+		B53586592348E35500B32A09 /* Nand2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586582348E35500B32A09 /* Nand2.swift */; };
+		B535865B2348E36600B32A09 /* Nand5.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535865A2348E36600B32A09 /* Nand5.swift */; };
+		B535865F2348E3B900B32A09 /* RomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535865E2348E3B900B32A09 /* RomCell.swift */; };
+		B53586612348E3CE00B32A09 /* RomColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586602348E3CE00B32A09 /* RomColumn.swift */; };
+		B53586632348E3DB00B32A09 /* RomPage2x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586622348E3DB00B32A09 /* RomPage2x2.swift */; };
+		B53586652348E3E800B32A09 /* RomPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586642348E3E800B32A09 /* RomPage.swift */; };
+		B53586672348E3FA00B32A09 /* Rom4x8.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586662348E3FA00B32A09 /* Rom4x8.swift */; };
+		B53586692348E41200B32A09 /* Rom1024x16.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586682348E41200B32A09 /* Rom1024x16.swift */; };
+		B535866C2348E42F00B32A09 /* FlipFlopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535866B2348E42F00B32A09 /* FlipFlopCell.swift */; };
+		B535866E2348E43F00B32A09 /* Register1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535866D2348E43F00B32A09 /* Register1.swift */; };
+		B53586702348E44F00B32A09 /* Register16.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535866F2348E44F00B32A09 /* Register16.swift */; };
+		B53586722348E46600B32A09 /* BusDriver16.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586712348E46600B32A09 /* BusDriver16.swift */; };
+		B53586742348E47D00B32A09 /* FixedBusDriver16.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586732348E47D00B32A09 /* FixedBusDriver16.swift */; };
+		B53586772348E49A00B32A09 /* ShiftLeft16.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586762348E49A00B32A09 /* ShiftLeft16.swift */; };
+		B53586792348E4B300B32A09 /* And16.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53586782348E4B300B32A09 /* And16.swift */; };
+		B535867B2348E4D500B32A09 /* Simulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535867A2348E4D500B32A09 /* Simulation.swift */; };
+		B535867D2348E4EE00B32A09 /* Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535867C2348E4EE00B32A09 /* Monitor.swift */; };
+		B535867F2348E52F00B32A09 /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535867E2348E52F00B32A09 /* Bus.swift */; };
 		B5FCAB8C23262B49003DE0A4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCAB8B23262B49003DE0A4 /* main.swift */; };
 		B5FCAB9323262B68003DE0A4 /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCAB9223262B68003DE0A4 /* Net.swift */; };
 		B5FCAB9523262BB3003DE0A4 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FCAB9423262BB3003DE0A4 /* Pin.swift */; };
@@ -25,6 +49,30 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B535864B2348E26F00B32A09 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		B535864E2348E2A500B32A09 /* SimulationParticipant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationParticipant.swift; sourceTree = "<group>"; };
+		B53586502348E2EC00B32A09 /* CircuitInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitInput.swift; sourceTree = "<group>"; };
+		B53586522348E30900B32A09 /* Inverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inverter.swift; sourceTree = "<group>"; };
+		B53586542348E31E00B32A09 /* Nor2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nor2.swift; sourceTree = "<group>"; };
+		B53586562348E34700B32A09 /* Nor5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nor5.swift; sourceTree = "<group>"; };
+		B53586582348E35500B32A09 /* Nand2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nand2.swift; sourceTree = "<group>"; };
+		B535865A2348E36600B32A09 /* Nand5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nand5.swift; sourceTree = "<group>"; };
+		B535865E2348E3B900B32A09 /* RomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomCell.swift; sourceTree = "<group>"; };
+		B53586602348E3CE00B32A09 /* RomColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomColumn.swift; sourceTree = "<group>"; };
+		B53586622348E3DB00B32A09 /* RomPage2x2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomPage2x2.swift; sourceTree = "<group>"; };
+		B53586642348E3E800B32A09 /* RomPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomPage.swift; sourceTree = "<group>"; };
+		B53586662348E3FA00B32A09 /* Rom4x8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rom4x8.swift; sourceTree = "<group>"; };
+		B53586682348E41200B32A09 /* Rom1024x16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rom1024x16.swift; sourceTree = "<group>"; };
+		B535866B2348E42F00B32A09 /* FlipFlopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipFlopCell.swift; sourceTree = "<group>"; };
+		B535866D2348E43F00B32A09 /* Register1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register1.swift; sourceTree = "<group>"; };
+		B535866F2348E44F00B32A09 /* Register16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register16.swift; sourceTree = "<group>"; };
+		B53586712348E46600B32A09 /* BusDriver16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusDriver16.swift; sourceTree = "<group>"; };
+		B53586732348E47D00B32A09 /* FixedBusDriver16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedBusDriver16.swift; sourceTree = "<group>"; };
+		B53586762348E49A00B32A09 /* ShiftLeft16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftLeft16.swift; sourceTree = "<group>"; };
+		B53586782348E4B300B32A09 /* And16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = And16.swift; sourceTree = "<group>"; };
+		B535867A2348E4D500B32A09 /* Simulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulation.swift; sourceTree = "<group>"; };
+		B535867C2348E4EE00B32A09 /* Monitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monitor.swift; sourceTree = "<group>"; };
+		B535867E2348E52F00B32A09 /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
 		B5FCAB8823262B49003DE0A4 /* circuitSimulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = circuitSimulator; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5FCAB8B23262B49003DE0A4 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B5FCAB9223262B68003DE0A4 /* Net.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
@@ -42,6 +90,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B535864D2348E28300B32A09 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				B53586752348E48E00B32A09 /* ALU */,
+				B535866A2348E42400B32A09 /* FlipFlop */,
+				B535865D2348E3A000B32A09 /* Rom */,
+				B535865C2348E38F00B32A09 /* Fundamental */,
+			);
+			path = Devices;
+			sourceTree = "<group>";
+		};
+		B535865C2348E38F00B32A09 /* Fundamental */ = {
+			isa = PBXGroup;
+			children = (
+				B53586502348E2EC00B32A09 /* CircuitInput.swift */,
+				B53586522348E30900B32A09 /* Inverter.swift */,
+				B53586542348E31E00B32A09 /* Nor2.swift */,
+				B53586562348E34700B32A09 /* Nor5.swift */,
+				B53586582348E35500B32A09 /* Nand2.swift */,
+				B535865A2348E36600B32A09 /* Nand5.swift */,
+			);
+			path = Fundamental;
+			sourceTree = "<group>";
+		};
+		B535865D2348E3A000B32A09 /* Rom */ = {
+			isa = PBXGroup;
+			children = (
+				B535865E2348E3B900B32A09 /* RomCell.swift */,
+				B53586602348E3CE00B32A09 /* RomColumn.swift */,
+				B53586622348E3DB00B32A09 /* RomPage2x2.swift */,
+				B53586642348E3E800B32A09 /* RomPage.swift */,
+				B53586662348E3FA00B32A09 /* Rom4x8.swift */,
+				B53586682348E41200B32A09 /* Rom1024x16.swift */,
+			);
+			path = Rom;
+			sourceTree = "<group>";
+		};
+		B535866A2348E42400B32A09 /* FlipFlop */ = {
+			isa = PBXGroup;
+			children = (
+				B535866B2348E42F00B32A09 /* FlipFlopCell.swift */,
+				B535866D2348E43F00B32A09 /* Register1.swift */,
+				B535866F2348E44F00B32A09 /* Register16.swift */,
+				B53586712348E46600B32A09 /* BusDriver16.swift */,
+				B53586732348E47D00B32A09 /* FixedBusDriver16.swift */,
+			);
+			path = FlipFlop;
+			sourceTree = "<group>";
+		};
+		B53586752348E48E00B32A09 /* ALU */ = {
+			isa = PBXGroup;
+			children = (
+				B53586762348E49A00B32A09 /* ShiftLeft16.swift */,
+				B53586782348E4B300B32A09 /* And16.swift */,
+			);
+			path = ALU;
+			sourceTree = "<group>";
+		};
 		B5FCAB7F23262B49003DE0A4 = {
 			isa = PBXGroup;
 			children = (
@@ -62,8 +168,14 @@
 			isa = PBXGroup;
 			children = (
 				B5FCAB8B23262B49003DE0A4 /* main.swift */,
-				B5FCAB9223262B68003DE0A4 /* Net.swift */,
 				B5FCAB9423262BB3003DE0A4 /* Pin.swift */,
+				B535864E2348E2A500B32A09 /* SimulationParticipant.swift */,
+				B5FCAB9223262B68003DE0A4 /* Net.swift */,
+				B535864B2348E26F00B32A09 /* Device.swift */,
+				B535867E2348E52F00B32A09 /* Bus.swift */,
+				B535867A2348E4D500B32A09 /* Simulation.swift */,
+				B535867C2348E4EE00B32A09 /* Monitor.swift */,
+				B535864D2348E28300B32A09 /* Devices */,
 			);
 			path = circuitSimulator;
 			sourceTree = "<group>";
@@ -125,9 +237,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B535867F2348E52F00B32A09 /* Bus.swift in Sources */,
 				B5FCAB9523262BB3003DE0A4 /* Pin.swift in Sources */,
+				B53586692348E41200B32A09 /* Rom1024x16.swift in Sources */,
+				B535866E2348E43F00B32A09 /* Register1.swift in Sources */,
+				B53586722348E46600B32A09 /* BusDriver16.swift in Sources */,
+				B53586772348E49A00B32A09 /* ShiftLeft16.swift in Sources */,
+				B53586742348E47D00B32A09 /* FixedBusDriver16.swift in Sources */,
+				B535864F2348E2A500B32A09 /* SimulationParticipant.swift in Sources */,
+				B535865F2348E3B900B32A09 /* RomCell.swift in Sources */,
+				B53586512348E2EC00B32A09 /* CircuitInput.swift in Sources */,
 				B5FCAB8C23262B49003DE0A4 /* main.swift in Sources */,
 				B5FCAB9323262B68003DE0A4 /* Net.swift in Sources */,
+				B53586632348E3DB00B32A09 /* RomPage2x2.swift in Sources */,
+				B535867B2348E4D500B32A09 /* Simulation.swift in Sources */,
+				B53586592348E35500B32A09 /* Nand2.swift in Sources */,
+				B535867D2348E4EE00B32A09 /* Monitor.swift in Sources */,
+				B53586572348E34700B32A09 /* Nor5.swift in Sources */,
+				B53586672348E3FA00B32A09 /* Rom4x8.swift in Sources */,
+				B53586792348E4B300B32A09 /* And16.swift in Sources */,
+				B535864C2348E26F00B32A09 /* Device.swift in Sources */,
+				B53586552348E31E00B32A09 /* Nor2.swift in Sources */,
+				B535866C2348E42F00B32A09 /* FlipFlopCell.swift in Sources */,
+				B53586612348E3CE00B32A09 /* RomColumn.swift in Sources */,
+				B53586652348E3E800B32A09 /* RomPage.swift in Sources */,
+				B535865B2348E36600B32A09 /* Nand5.swift in Sources */,
+				B53586532348E30900B32A09 /* Inverter.swift in Sources */,
+				B53586702348E44F00B32A09 /* Register16.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
